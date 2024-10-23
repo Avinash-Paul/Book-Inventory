@@ -23,13 +23,12 @@ mongoose.connect(process.env.MONGO_URI, {
     console.error('Connection error', err);
   });
 
-// Define a router
 const router = express.Router();
 
 const Book = require('./models/book');
 const { use } = require('./routes/authroutes');
 
-// Fetch all books for the logged-in user
+
 app.get('/books', async (req, res) => {
   const token = req.headers['authorization'];
   if (!token) return res.status(401).json({ message: 'Unauthorized' });
@@ -43,7 +42,7 @@ app.get('/books', async (req, res) => {
   }
 });
 
-// Add a new book
+
 app.post('/books', async (req, res) => {
   const { title, description } = req.body;
   const token = req.headers['authorization'];
@@ -59,7 +58,7 @@ app.post('/books', async (req, res) => {
   }
 });
 
-// Edit a book
+
 app.put('/books/:id', async (req, res) => {
   const { title, description } = req.body;
   const token = req.headers['authorization'];
@@ -79,7 +78,7 @@ app.put('/books/:id', async (req, res) => {
   }
 });
 
-// Delete a book
+
 app.delete('/books/:id', async (req, res) => {
   const token = req.headers['authorization'];
   if (!token) return res.status(401).json({ message: 'Unauthorized' });
@@ -95,7 +94,7 @@ app.delete('/books/:id', async (req, res) => {
 });
 
 
-// Registration route
+
 router.post('/auth/register', async (req, res) => {
   const { username, email, password } = req.body;
   try {
@@ -103,12 +102,12 @@ router.post('/auth/register', async (req, res) => {
       await newUser.save();
       res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
-      console.error('Error registering user:', error); // Log the error
+      console.error('Error registering user:', error);
       res.status(500).json({ message: 'Error registering user' });
   }
 });
 
-// Login route
+
 router.post('/auth/login', async (req, res) => {
   const { email, password } = req.body;
 

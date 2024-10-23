@@ -10,10 +10,14 @@ const LoginPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate(); 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(loginUser(email, password));
-        navigate('/dashboard'); 
+        const result = await dispatch(loginUser(email, password));
+        if (result.error) {
+            alert(result.error);
+        } else {
+            navigate('/dashboard'); 
+        }
     };
 
     return (

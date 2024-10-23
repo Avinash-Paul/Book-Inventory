@@ -16,12 +16,30 @@ const authSlice = createSlice({
 
 export const { login, logout } = authSlice.actions;
 
+
 export const loginUser = (email, password) => async (dispatch) => {
     try {
         const response = await axios.post('http://localhost:5000/auth/login', { email, password });
-        dispatch(login(response.data.token));
+        
+      
+        if (response.data.token) {
+            dispatch(login(response.data.token));
+            return { success: true }; 
+        } else {
+            return { error: "Invalid credentials" }; 
+        }
     } catch (error) {
-        console.error('Login error', error);
+       
+        if (error.response) {
+            
+            if (error.response.status === 401) {
+                return { error: "Invalid email or password." }; 
+            }
+            return { error: "Invalid email or password." };
+        } else {
+            
+            return { error: "Network error. Please try again later." };
+        }
     }
 };
 
