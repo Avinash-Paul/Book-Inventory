@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-image: url('../Assets/background.jpg'); 
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-blur: 3px;
+}
+
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.9); 
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 400px; 
+    text-align: center;
+}
+
+
+h2 {
+    margin-bottom: 25px;
+    font-size: 28px;
+    color: #333;
+    font-weight: 500;
+}
+
+
+input[type="email"],
+input[type="password"] {
+    width: 100%; 
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 18px;
+    transition: border-color 0.3s ease;
+}
+
+
+input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+p {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #555;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
